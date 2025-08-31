@@ -14,7 +14,7 @@ Can be pip-installed: `pip install logelin`
 
 ## Limitations
 
-Known to converge poorly in situations with high measurement error/small sample size. 
+Known to converge poorly in situations with high measurement error/small sample size. As seen in `test.ipynb` the program struggles to resolve covariances, especially with smaller samples.
 
 The incorporation of measurement error within `logelin.infer.model` can definitely be improved. Currently it assumes a flat error rate on proper $a$ and $b$. In real surveys however, we are likely to have detailed uncertainties on both the angular $a$ and $b$, as well as $z$.
 
