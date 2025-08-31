@@ -10,5 +10,12 @@ Typically, a program such as Source Extractor will process telescope data, drawi
 
 ## Installation
 
+Can be pip-installed: `pip install logelin`
 
 ## Limitations
+
+Known to converge poorly in situations with high measurement error/small sample size. 
+
+The incorporation of measurement error within `logelin.infer.model` can definitely be improved. Currently it assumes a flat error rate on proper $a$ and $b$. In real surveys however, we are likely to have detailed uncertainties on both the angular $a$ and $b$, as well as $z$.
+
+Another issue arises when considering measurement error in `logelin.infer.model`. If `a_true` and `b_true` are sufficiently similar, it is not unlikely that after incorporating the measurement error that they get mixed up (`a_obs`<`b_obs`). I assume the most efficient way to achieve this would be creating a custom `numpyro` distribution that is derived from a bivariate uncorrelated Gaussian in `a_obs` and `b_obs`, except with the PDF being exactly $0$ in the region where `a_obs` < `b_obs`. 
